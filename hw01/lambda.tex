@@ -1,0 +1,90 @@
+\documentclass[12pt]{letter}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\begin{document}
+	\begin{center}
+		\begin{large} Homework 1 Answers \end{large}
+	\end{center}
+
+	\begin{enumerate}
+
+		\item
+		
+		\item Beta-reduce lambda expression:
+		\begin{itemize}
+			\item[] $(((\lambda x.\lambda y.\lambda z.((x~y)~z)~\lambda f.\lambda a.(f~a))~\lambda i.i)~\lambda j.j)$
+			\item[$\rightarrow$]
+			$((\lambda y.\lambda z.((\lambda f.\lambda a.(f~a)~y)~z)~\lambda i.i)~\lambda j.j)$
+			\item[$\rightarrow$]
+			$(\lambda z.((\lambda f.\lambda a.(f~a)~\lambda i.i)~z)~\lambda j.j)$
+			\item[$\rightarrow$]
+			$((\lambda f.\lambda a.(f~a)~\lambda i.i)~\lambda j.j)$
+			\item[$\rightarrow$]
+			$(\lambda a.(\lambda i.i~a)~\lambda j.j)$
+			\item[$\rightarrow$]
+			$(\lambda i.i~\lambda j.j)$
+			\item[$\rightarrow$]
+			$\lambda j.j$
+		\end{itemize}
+		
+		\item Beta-reduce lambda expression:
+		\begin{itemize}
+			\item[]
+			$(\lambda h.((\lambda a.\lambda f.(f~a)~h)~h)~\lambda f.(f~f))$
+			\item[$\rightarrow$]
+			$(\lambda h.(\lambda f.(f~h)~h)~\lambda f.(f~f))$
+			\item[$\rightarrow$]
+			$(\lambda h.(h~h)~\lambda f.(f~f))$
+			\item[$\rightarrow$]
+			$(\lambda f.(f~f)~\lambda f.(f~f))$
+			\item[$\rightarrow$]
+			$(\lambda f.(f~f)~\lambda f.(f~f))$
+			... and repeat to infinity and beyond.
+		\end{itemize}
+		
+		\item Use $\alpha$ conversion to ensure unique names in the following expression:
+		\begin{itemize}
+			\item[]
+			$\lambda x.\lambda y.(\lambda x.y~\lambda y.x)$
+			\item[$\rightarrow$]
+			$\lambda x.\lambda y.(\lambda m.y~\lambda n.x)$
+		\end{itemize}
+		
+		\item Define a λ calculus representation for implies. You
+should be able to reduce your answer down so that it's in terms
+of x, and y and maybe true, and/or false. Notice, when X is true,
+Implies is the same as Y and when X is False, Implies is True.
+			Assuming:
+			\begin{itemize}
+				\item $def cond = λe1.λe2.λc.((c~e1)~e2)$
+				\item $def not = λx.(((cond~false)~true)~x)$
+				\item $def or= λx.λy.((x~true)~y)$
+			\end{itemize}
+
+			We have:
+			\begin{itemize}
+				\item[]
+				$(or~(not~x)~y)$
+				\item[$\rightarrow$]
+				$((\lambda x.\lambda y.((x~true)~y) (\lambda x.(((cond~false)~true)~x)~x))~y)$
+				\item[$\rightarrow$]
+				$(\lambda y.(((\lambda x.(((cond~false)~true)~x)~x)~true)~y)~y)$
+				\item[$\rightarrow$]
+				$(((\lambda x.(((cond~false)~true)~x)~x)~true)~y)$
+				\item[$\rightarrow$]
+				$(((((cond~false)~true)~x)~true)~y)$
+				\item[$\rightarrow$]
+				$((((\lambda e2.\lambda c.((c~false)~e2)~true)~x)~true)~y)$
+				\item[$\rightarrow$]
+				$(((\lambda c.((c~false)~true)~x)~true)~y)$
+				\item[$\rightarrow$]
+				$((((x~false)~true)~true)~y)$
+			\end{itemize}
+			
+			Interpretation: If $x$ is false then the expression is $true$, otherwise the expression is equal to $y$.
+			
+	\end{enumerate}
+
+\end{document}
