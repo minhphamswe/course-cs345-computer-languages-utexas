@@ -1,0 +1,8 @@
+# Editor back-up files
+*~
+*#
+
+# LaTeX Build products
+*.aux
+*.log
+*.synctex.gz
