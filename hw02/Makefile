@@ -2,7 +2,7 @@
 ## TA's CSID
 TAID = benself
 ## assignment number
-ASGN = cs345_hw2
+ASGN = CS345-HW2
 ## files to submit
 SUBM = hw2.zip
 
