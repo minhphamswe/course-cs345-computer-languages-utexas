@@ -18,8 +18,14 @@
 ;;; Function is implemented recursively
 ;;; Could also be done tail-recursively, but done this way for variety
 ;;; Since we are not emphasizing efficiency in this homework.
-(letrec ((foldr (lambda (op val lst)
-                  (if (null? (cdr lst))
-                      (op val (car lst))
-                      (op (car lst) (foldr op val (cdr lst)))))))
-  (foldr + 0 '(1 2 3 4 5 6)))
+(letrec ((foldr 
+          (lambda (op val lst)
+            (letrec ((foldr-rec
+                      (lambda (op lst)
+                        (if (null? (cdr lst))
+                            (car lst)
+                            (op (car lst) (foldr-rec op (cdr lst)))))))
+              (op val (foldr-rec op lst))))))
+  (foldr + 1 '(1 2 3 4 5 6))
+  ;(foldr cons 0 '(1 2 3 4 5 6))
+  )
