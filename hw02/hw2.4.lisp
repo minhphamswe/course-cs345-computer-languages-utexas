@@ -20,10 +20,14 @@
 ; (foldl + 0 '(1 2 3))
 ; (+ 0 (+ 3 (+ 2 1)))
 
-(let ((foldl (lambda (op val lst)
-         (letrec ((foldl-rec (lambda (op val lst acc)
-                               (if (null? lst)
-                                   acc
-                                   (foldl-rec op val (cdr lst) (op acc (car lst)))))))
+;;; Function is implemented tail-recursively
+(let ((foldl
+       (lambda (op val lst)
+         (letrec (; subfunction, with accumulator
+                  (foldl-rec  
+                   (lambda (op val lst acc)
+                     (if (null? lst)
+                         (op acc val)
+                         (foldl-rec op val (cdr lst) (op acc (car lst)))))))
            (foldl-rec op val (cdr lst) (car lst))))))
-  (foldl + 0 '(1 2 3 4 5 6)))
+  (foldl + 1 '(1 2 3 4 5 6)))
