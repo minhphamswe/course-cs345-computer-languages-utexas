@@ -16,3 +16,14 @@
 ;;;; i.e., (foldl + 0 List) evaluates to 21.
 ;;;; Hint - study and understand the head function, foldl is somewhat similar
 ;;;; to it.
+
+; (foldl + 0 '(1 2 3))
+; (+ 0 (+ 3 (+ 2 1)))
+
+(let ((foldl (lambda (op val lst)
+         (letrec ((foldl-rec (lambda (op val lst acc)
+                               (if (null? lst)
+                                   acc
+                                   (foldl-rec op val (cdr lst) (op acc (car lst)))))))
+           (foldl-rec op val (cdr lst) (car lst))))))
+  (foldl + 0 '(1 2 3 4 5 6)))
