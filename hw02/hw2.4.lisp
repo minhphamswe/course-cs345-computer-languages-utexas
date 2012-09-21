@@ -18,7 +18,7 @@
 ;;;; to it.
 
 ; (foldl + 0 '(1 2 3))
-; (+ 0 (+ 3 (+ 2 1)))
+; (+ (+ (+ 1 2) 3) v)
 
 ;;; Function is implemented tail-recursively
 (let ((foldl
@@ -30,4 +30,4 @@
                          (op acc val)
                          (foldl-rec op val (cdr lst) (op acc (car lst)))))))
            (foldl-rec op val (cdr lst) (car lst))))))
-  (foldl + 1 '(1 2 3 4 5 6)))
+  (foldl + 0 '(1 2 3 4 5 6)))                  
