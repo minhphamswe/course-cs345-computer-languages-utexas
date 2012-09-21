@@ -26,6 +26,6 @@
                             (car lst)
                             (op (car lst) (foldr-rec op (cdr lst)))))))
               (op val (foldr-rec op lst))))))
-  (foldr + 1 '(1 2 3 4 5 6))
+  (foldr + 0 '(1 2 3 4 5 6))
   ;(foldr cons 0 '(1 2 3 4 5 6))
   )
