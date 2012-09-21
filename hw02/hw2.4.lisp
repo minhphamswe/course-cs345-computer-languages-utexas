@@ -24,10 +24,10 @@
 (let ((foldl
        (lambda (op val lst)
          (letrec (; subfunction, with accumulator
-                  (foldl-rec  
+                  (foldl-rec
                    (lambda (op val lst acc)
                      (if (null? lst)
                          (op acc val)
                          (foldl-rec op val (cdr lst) (op acc (car lst)))))))
            (foldl-rec op val (cdr lst) (car lst))))))
-  (foldl + 0 '(1 2 3 4 5 6)))                  
+  (foldl cons 0 '(1 2 3 4 5 6)))
