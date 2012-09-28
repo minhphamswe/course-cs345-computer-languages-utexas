@@ -1,0 +1,70 @@
+PARSER_BEGIN(FormatDTraceProfile)
+
+import java.io.*;
+import java.util.*;
+
+public class FormatDTraceProfile {
+    private static int eol = 0;
+    private static String eid, rid;
+    private static String sql = "insert into ibprofile (eid, rid, line, events, ticks, cpu, count, function, stack) values("; 
+    public static void main(String args[]) throws ParseException {
+       if (args == null || args.length != 2) {
+          System.err.println("Usage: FormatDTraceProfile" + " EID RID");
+          System.exit(1);       
+       }
+       eid = args[0]; rid = args[1];
+       FormatDTraceProfile formatter = new FormatDTraceProfile (System.in);
+       formatter.output();
+    }
+}
+
+PARSER_END(FormatDTraceProfile)
+
+SKIP :
+{
+    " "
+  | "\t"
+}
+
+TOKEN:
+{
+    < COLON:    ":" >
+  | < CPU:      "CPU" >
+  | < ID:       "ID" >
+  | < FUNC:     "FUNCTION" >
+  | < NAME:     "NAME" >
+  | < BEGIN:    "BEGIN" >
+  | < END:      "END" >
+  | < TICK:     "tick-" (["0"-"9"])+ "s" >
+  | < DASHES:   ("-")+ >
+  | < KS:       "Kernel stacks" >
+  | < INTEGER:  (["0"-"9"])+ >
+  | <STACKELEM: (["!"-"_", "a"-"~"])+ "`" (["!"-"~"])+  > // A string of any printable ascii characters (except space) that has at least one '`' character in it.
+  | < EOL:      "\n" | "\r" | "\n\r" | "\r\n" >
+}
+
+TOKEN:
+{
+    <ERROR: ~[] >
+}
+
+void output() :
+{ }
+{
+
+
+
+
+
+
+
+
+
+
+
+} 
+void eol() :
+{ }
+{
+    (LOOKAHEAD(2)<EOL>)+ { eol++; }
+}
