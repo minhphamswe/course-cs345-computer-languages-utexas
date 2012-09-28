@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/runtime/rmi
+END
+Test.class
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/runtime/rmi/Test.class
+END
+Prolog.class
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/runtime/rmi/Prolog.class
+END
+Daemon.class
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/runtime/rmi/Daemon.class
+END
+PrologImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/runtime/rmi/PrologImpl.class
+END

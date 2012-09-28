@@ -1,0 +1,527 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog
+END
+OperatorManager$OperatorRegister.class
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/OperatorManager$OperatorRegister.class
+END
+FamilyClausesList$ListItrTest.class
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/FamilyClausesList$ListItrTest.class
+END
+OperatorManager.class
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/OperatorManager.class
+END
+TermVisitor.class
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/TermVisitor.class
+END
+UnknownVarException.class
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/UnknownVarException.class
+END
+Number.class
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/Number.class
+END
+ClauseStore.class
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/ClauseStore.class
+END
+FamilyClausesIndex.class
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/FamilyClausesIndex.class
+END
+Int.class
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/Int.class
+END
+StringLibrary.class
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/StringLibrary.class
+END
+InvalidTermException.class
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/InvalidTermException.class
+END
+LibraryManager.class
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/LibraryManager.class
+END
+JavaException.class
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/JavaException.class
+END
+EngineManager.class
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/EngineManager.class
+END
+hash_table.pl
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/hash_table.pl
+END
+ClauseDatabase.class
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/ClauseDatabase.class
+END
+Library.class
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/Library.class
+END
+ExecutionContext.class
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/ExecutionContext.class
+END
+Agent$AgentThread.class
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/Agent$AgentThread.class
+END
+Double.class
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/Double.class
+END
+Tokenizer.class
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/Tokenizer.class
+END
+SubGoalTree.class
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/SubGoalTree.class
+END
+StateRuleSelection.class
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/StateRuleSelection.class
+END
+DefaultSubGoalId.class
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/DefaultSubGoalId.class
+END
+State.class
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/State.class
+END
+PrologException.class
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/PrologException.class
+END
+RBTree.class
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/RBTree.class
+END
+Struct.class
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/Struct.class
+END
+Node.class
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/Node.class
+END
+StateBacktrack.class
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/StateBacktrack.class
+END
+NoSolutionException.class
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/NoSolutionException.class
+END
+Var.class
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/Var.class
+END
+MalformedGoalException.class
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/MalformedGoalException.class
+END
+StateGoalSelection.class
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/StateGoalSelection.class
+END
+InvalidLibraryException.class
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/InvalidLibraryException.class
+END
+DefaultOperatorManager.class
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/DefaultOperatorManager.class
+END
+FamilyClausesList.class
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/FamilyClausesList.class
+END
+StructIterator.class
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/StructIterator.class
+END
+StateException.class
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/StateException.class
+END
+Long.class
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/Long.class
+END
+InvalidTheoryException.class
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/InvalidTheoryException.class
+END
+PrimitiveManager.class
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/PrimitiveManager.class
+END
+StateInit.class
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/StateInit.class
+END
+ClausesFilter.class
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/ClausesFilter.class
+END
+Engine.class
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/Engine.class
+END
+SubGoalElement.class
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/SubGoalElement.class
+END
+HaltException.class
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/HaltException.class
+END
+Term.class
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/Term.class
+END
+ClauseDatabase$CompleteIterator.class
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/ClauseDatabase$CompleteIterator.class
+END
+HashLibrary.class
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/HashLibrary.class
+END
+ChoicePointContext.class
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/ChoicePointContext.class
+END
+SubGoalId.class
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/SubGoalId.class
+END
+Theory.class
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/Theory.class
+END
+StateGoalEvaluation.class
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/StateGoalEvaluation.class
+END
+NoMoreSolutionException.class
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/NoMoreSolutionException.class
+END
+FamilyClausesList$ListItr.class
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/FamilyClausesList$ListItr.class
+END
+InvalidVarNameException.class
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/InvalidVarNameException.class
+END
+ChoicePointStore.class
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/ChoicePointStore.class
+END
+TermIterator.class
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/TermIterator.class
+END
+Agent$1.class
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/Agent$1.class
+END
+ISolution.class
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/ISolution.class
+END
+ClauseInfo.class
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/ClauseInfo.class
+END
+einsteinsRiddle.pl
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/einsteinsRiddle.pl
+END
+Prolog.class
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/Prolog.class
+END
+points_test2.pl
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/points_test2.pl
+END
+FlagManager.class
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/FlagManager.class
+END
+IPrimitives.class
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/IPrimitives.class
+END
+BuiltIn.class
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/BuiltIn.class
+END
+StateEnd.class
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/StateEnd.class
+END
+SubGoalStore.class
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/SubGoalStore.class
+END
+PrologError.class
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/PrologError.class
+END
+Parser$IdentifiedTerm.class
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/Parser$IdentifiedTerm.class
+END
+Color.class
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/Color.class
+END
+Token.class
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/Token.class
+END
+points_test.pl
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/points_test.pl
+END
+PrimitiveInfo.class
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/PrimitiveInfo.class
+END
+hash_table_jinni.pl
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/hash_table_jinni.pl
+END
+Operator.class
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/Operator.class
+END
+Parser.class
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/Parser.class
+END
+Agent.class
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/Agent.class
+END
+Tokenizer$PushBack.class
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/Tokenizer$PushBack.class
+END
+AbstractSubGoalTree.class
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/AbstractSubGoalTree.class
+END
+SolveInfo.class
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/SolveInfo.class
+END
+Float.class
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/Float.class
+END
+TheoryManager.class
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/TheoryManager.class
+END
+points_test_jinni.pl
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/points_test_jinni.pl
+END
+Flag.class
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/Flag.class
+END

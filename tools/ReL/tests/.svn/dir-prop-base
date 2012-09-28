@@ -1,0 +1,13 @@
+K 10
+svn:ignore
+V 51
+c
+data
+java
+modjy
+policy
+python
+quadDump.txt
+shell
+
+END

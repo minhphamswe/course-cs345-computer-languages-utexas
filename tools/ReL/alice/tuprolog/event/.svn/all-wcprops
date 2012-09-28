@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/event
+END
+QueryListener.class
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/event/QueryListener.class
+END
+WarningListener.class
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/event/WarningListener.class
+END
+TheoryEvent.class
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/event/TheoryEvent.class
+END
+SpyEvent.class
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/event/SpyEvent.class
+END
+TheoryListener.class
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/event/TheoryListener.class
+END
+SpyListener.class
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/event/SpyListener.class
+END
+ExceptionEvent.class
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/event/ExceptionEvent.class
+END
+OutputEvent.class
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/event/OutputEvent.class
+END
+PrologEvent.class
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/event/PrologEvent.class
+END
+ExceptionListener.class
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/event/ExceptionListener.class
+END
+PrologEventAdapter.class
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/event/PrologEventAdapter.class
+END
+OutputListener.class
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/event/OutputListener.class
+END
+LibraryEvent.class
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/event/LibraryEvent.class
+END
+WarningEvent.class
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/event/WarningEvent.class
+END
+QueryEvent.class
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/event/QueryEvent.class
+END
+PrologEventListener.class
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/event/PrologEventListener.class
+END
+LibraryListener.class
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/event/LibraryListener.class
+END

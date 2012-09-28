@@ -1,0 +1,137 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/pj/annotations/parser
+END
+Tokenizer$10.class
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/pj/annotations/parser/Tokenizer$10.class
+END
+Tokenizer$Token.class
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/pj/annotations/parser/Tokenizer$Token.class
+END
+UnexpectedEndOfExpressionException.class
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/pj/annotations/parser/UnexpectedEndOfExpressionException.class
+END
+Tokenizer$11.class
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/pj/annotations/parser/Tokenizer$11.class
+END
+Tokenizer$12.class
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/pj/annotations/parser/Tokenizer$12.class
+END
+Tokenizer$13.class
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/pj/annotations/parser/Tokenizer$13.class
+END
+PrologTree.class
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/pj/annotations/parser/PrologTree.class
+END
+PrologTree$VariableExpr.class
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/pj/annotations/parser/PrologTree$VariableExpr.class
+END
+Parser.class
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/pj/annotations/parser/Parser.class
+END
+Tokenizer$1.class
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/pj/annotations/parser/Tokenizer$1.class
+END
+Tokenizer$2.class
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/pj/annotations/parser/Tokenizer$2.class
+END
+Tokenizer$3.class
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/pj/annotations/parser/Tokenizer$3.class
+END
+Tokenizer$4.class
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/pj/annotations/parser/Tokenizer$4.class
+END
+Tokenizer$5.class
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/pj/annotations/parser/Tokenizer$5.class
+END
+Tokenizer$6.class
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/pj/annotations/parser/Tokenizer$6.class
+END
+MalformedExpressionException.class
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/pj/annotations/parser/MalformedExpressionException.class
+END
+Tokenizer$7.class
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/pj/annotations/parser/Tokenizer$7.class
+END
+PrologTree$PredicateExpr.class
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/pj/annotations/parser/PrologTree$PredicateExpr.class
+END
+Tokenizer$8.class
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/pj/annotations/parser/Tokenizer$8.class
+END
+PrologTree$SignatureExpr.class
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/pj/annotations/parser/PrologTree$SignatureExpr.class
+END
+Tokenizer$9.class
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/pj/annotations/parser/Tokenizer$9.class
+END
+Tokenizer.class
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprologx/pj/annotations/parser/Tokenizer.class
+END

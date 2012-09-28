@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/lib
+END
+ClassLoader.class
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/lib/ClassLoader.class
+END
+IOLibrary.class
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/lib/IOLibrary.class
+END
+ISOLibrary.class
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/lib/ISOLibrary.class
+END
+TheoryLibrary.class
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/lib/TheoryLibrary.class
+END
+ListenerInfo.class
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/lib/ListenerInfo.class
+END
+Signature.class
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/lib/Signature.class
+END
+DCGLibrary.class
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/lib/DCGLibrary.class
+END
+BasicLibrary.class
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/lib/BasicLibrary.class
+END
+JavaLibrary.class
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/lib/JavaLibrary.class
+END
+EDCGLibrary.class
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/lib/EDCGLibrary.class
+END
+ISOIOLibrary.class
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/lib/ISOIOLibrary.class
+END
+InvalidObjectIdException.class
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/rel_ut/!svn/ver/2/trunk/alice/tuprolog/lib/InvalidObjectIdException.class
+END

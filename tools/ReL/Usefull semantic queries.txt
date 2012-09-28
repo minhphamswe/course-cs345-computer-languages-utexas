@@ -1,0 +1,17 @@
+SELECT * FROM MDSYS.SEM_MODEL$;	
+EXECUTE SEM_APIS.DROP_RDF_MODEL('RDF_MODEL_CS345_PROF1');
+
+drop table "CS345_PROF1"."RDF_DATA_TABLE"  ;
+drop sequence "CS345_PROF1"."RDF_DATA_TABLE_SQNC" ;
+drop sequence "CS345_PROF1"."RDF_GUID_SQNC" ;
+
+SELECT a.triple.GET_MODEL() as model_graph,
+      a.triple.GET_SUBJECT() as subject,  
+      a.triple.GET_PROPERTY() as property,
+      a.triple.GET_OBJECT() as object,
+      a.triple.GET_TRIPLE() as triple
+      from RDF_DATA_TABLE a order by model_graph, subject, property
+
+SELECT * FROM MDSYS.SEM_RULEBASE_INFO where owner = 'CS345_PROF';
+SELECT * FROM MDSYS.SEM_RULEBASE_INFO;	
+

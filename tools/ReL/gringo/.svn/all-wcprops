@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/rel_ut/!svn/ver/2/trunk/gringo
+END
+gringo.exe
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/rel_ut/!svn/ver/2/trunk/gringo/gringo.exe
+END
+CHANGES
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/rel_ut/!svn/ver/2/trunk/gringo/CHANGES
+END
+COPYING
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/rel_ut/!svn/ver/2/trunk/gringo/COPYING
+END

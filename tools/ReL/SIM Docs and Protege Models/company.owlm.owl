@@ -1,0 +1,165 @@
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: : <http://www.rel.org/company.owl#>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+
+
+Ontology: <http://www.rel.org/company.owl>
+
+
+Datatype: xsd:Name
+
+    
+Datatype: xsd:string
+
+    
+Datatype: xsd:nonNegativeInteger
+
+    
+ObjectProperty: manages
+
+    Domain: 
+        EmployeeT
+    
+    Range: 
+        EmployeeT
+    
+    InverseOf: 
+        managers
+    
+    
+ObjectProperty: owl:topObjectProperty
+
+    
+ObjectProperty: managers
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Domain: 
+        EmployeeT
+    
+    Range: 
+        EmployeeT
+    
+    InverseOf: 
+        manages
+    
+    
+ObjectProperty: children
+
+    Domain: 
+        PersonT
+    
+    Range: 
+        PersonT
+    
+    InverseOf: 
+        parents
+    
+    
+ObjectProperty: parents
+
+    Domain: 
+        PersonT
+    
+    Range: 
+        PersonT
+    
+    InverseOf: 
+        children
+    
+    
+DataProperty: lastName
+
+    Domain: 
+        PersonT
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: salary
+
+    Characteristics: 
+        Functional
+    
+    Domain: 
+        EmployeeT
+    
+    Range: 
+        xsd:nonNegativeInteger
+    
+    
+DataProperty: employeeId
+
+    Characteristics: 
+        Functional
+    
+    Domain: 
+        PersonT
+    
+    Range: 
+        xsd:nonNegativeInteger
+    
+    
+DataProperty: firstName
+
+    Domain: 
+        PersonT
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: personId
+
+    Characteristics: 
+        Functional
+    
+    Domain: 
+        PersonT
+    
+    Range: 
+        xsd:nonNegativeInteger
+    
+    
+DataProperty: zipcode
+
+    Characteristics: 
+        Functional
+    
+    Domain: 
+        PersonT
+    
+    Range: 
+        xsd:nonNegativeInteger
+    
+    
+DataProperty: owl:topDataProperty
+
+    
+Class: EmployeeT
+
+    SubClassOf: 
+        PersonT,
+        salary exactly 1 xsd:nonNegativeInteger,
+        employeeId exactly 1 xsd:nonNegativeInteger
+    
+    
+Class: PersonT
+
+    SubClassOf: 
+        parents exactly 2 PersonT,
+        personId exactly 1 xsd:Name
+    
+    

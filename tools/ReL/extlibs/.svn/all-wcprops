@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/rel_ut/!svn/ver/112/trunk/extlibs
+END
+META-INF
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/rel_ut/!svn/ver/2/trunk/extlibs/META-INF
+END
+jsqlparser.jar
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/rel_ut/!svn/ver/2/trunk/extlibs/jsqlparser.jar
+END
+ojdbc6.jar
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/rel_ut/!svn/ver/2/trunk/extlibs/ojdbc6.jar
+END
+jsqlparser
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/rel_ut/!svn/ver/2/trunk/extlibs/jsqlparser
+END
+2p.jar
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/rel_ut/!svn/ver/2/trunk/extlibs/2p.jar
+END

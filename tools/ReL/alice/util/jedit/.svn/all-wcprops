@@ -1,0 +1,341 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit
+END
+JEditTextArea$ScrollLayout.class
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/JEditTextArea$ScrollLayout.class
+END
+InputHandler$delete_word.class
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$delete_word.class
+END
+InputHandler$toggle_rect.class
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$toggle_rect.class
+END
+TextUtilities.class
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/TextUtilities.class
+END
+TokenMarker.class
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/TokenMarker.class
+END
+InputHandler$document_end.class
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$document_end.class
+END
+InputHandler$backspace_word.class
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$backspace_word.class
+END
+InputHandler$prev_page.class
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$prev_page.class
+END
+InputHandler$next_word.class
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$next_word.class
+END
+InputHandler$copy.class
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$copy.class
+END
+JEditTextArea$MutableCaretEvent.class
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/JEditTextArea$MutableCaretEvent.class
+END
+TextAreaPainter$Highlight.class
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/TextAreaPainter$Highlight.class
+END
+InputHandler.class
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler.class
+END
+InputHandler$next_char.class
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$next_char.class
+END
+JEditTextArea$DragHandler.class
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/JEditTextArea$DragHandler.class
+END
+JEditTextArea.class
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/JEditTextArea.class
+END
+JEditTextArea$DocumentHandler.class
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/JEditTextArea$DocumentHandler.class
+END
+JEditTextArea$AdjustHandler$1.class
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/JEditTextArea$AdjustHandler$1.class
+END
+TextAreaPainter.class
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/TextAreaPainter.class
+END
+InputHandler$repeat.class
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$repeat.class
+END
+DefaultInputHandler.class
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/DefaultInputHandler.class
+END
+TextAreaDefaults.class
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/TextAreaDefaults.class
+END
+JEditTextArea$CaretUndo.class
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/JEditTextArea$CaretUndo.class
+END
+InputHandler$next_line.class
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$next_line.class
+END
+SyntaxStyle.class
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/SyntaxStyle.class
+END
+InputHandler$overwrite.class
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$overwrite.class
+END
+InputHandler$document_home.class
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$document_home.class
+END
+JEditTextArea$MouseHandler.class
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/JEditTextArea$MouseHandler.class
+END
+InputHandler$insert_tab.class
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$insert_tab.class
+END
+InputHandler$cut.class
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$cut.class
+END
+Token.class
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/Token.class
+END
+JEditTextArea$1.class
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/JEditTextArea$1.class
+END
+JEditTextArea$ComponentHandler.class
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/JEditTextArea$ComponentHandler.class
+END
+KeywordMap.class
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/KeywordMap.class
+END
+SyntaxUtilities.class
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/SyntaxUtilities.class
+END
+InputHandler$insert_char.class
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$insert_char.class
+END
+InputHandler$delete.class
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$delete.class
+END
+SyntaxDocument.class
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/SyntaxDocument.class
+END
+JEditTextArea$CaretBlinker.class
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/JEditTextArea$CaretBlinker.class
+END
+InputHandler$end.class
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$end.class
+END
+InputHandler$prev_word.class
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$prev_word.class
+END
+InputHandler$insert_break.class
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$insert_break.class
+END
+InputHandler$prev_char.class
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$prev_char.class
+END
+KeywordMap$Keyword.class
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/KeywordMap$Keyword.class
+END
+InputHandler$next_page.class
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$next_page.class
+END
+InputHandler$paste.class
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$paste.class
+END
+InputHandler$backspace.class
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$backspace.class
+END
+InputHandler$NonRecordable.class
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$NonRecordable.class
+END
+JEditTextArea$FocusHandler.class
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/JEditTextArea$FocusHandler.class
+END
+InputHandler$NonRepeatable.class
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$NonRepeatable.class
+END
+InputHandler$Wrapper.class
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$Wrapper.class
+END
+InputHandler$prev_line.class
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$prev_line.class
+END
+InputHandler$MacroRecorder.class
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$MacroRecorder.class
+END
+InputHandler$home.class
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/InputHandler$home.class
+END
+JEditTextArea$AdjustHandler.class
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/JEditTextArea$AdjustHandler.class
+END
+TokenMarker$LineInfo.class
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/rel_ut/!svn/ver/2/trunk/alice/util/jedit/TokenMarker$LineInfo.class
+END
