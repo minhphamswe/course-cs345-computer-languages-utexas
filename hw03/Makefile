@@ -9,3 +9,6 @@ FormatDTraceProfile.java: FormatDTraceProfile.jj
 clean:
 	rm *.class FormatDTraceProfile.java FormatDTraceProfileConstants.java FormatDTraceProfileTokenManager.java ParseException.java SimpleCharStream.java Token.java TokenMgrError.java
 
+turnin:
+	turnin ­--submit benself CS345_HW3 HW3.scm Parser.jj FormatDTraceProfile.jj
+
