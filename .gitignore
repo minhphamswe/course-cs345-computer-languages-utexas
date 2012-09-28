@@ -6,3 +6,6 @@
 *.aux
 *.log
 *.synctex.gz
+
+# Java Build products
+*.class
