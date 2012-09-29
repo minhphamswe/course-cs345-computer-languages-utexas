@@ -49,11 +49,40 @@ TOKEN:
 }
 
 void output() :
-{ }
+{ 
+    Token cpu;
+    Token events;
+    Token ticks;
+    Token stackelem;
+    Token count;
+    Token function;
+    String funcstr;
+    String stack;
+}
 {
+    <CPU> <ID> <FUNC> <COLON> <NAME> eol()
 
+    <INTEGER> <INTEGER> <COLON> <BEGIN> eol()
+    <INTEGER> events=<INTEGER> <COLON> ticks=<TICK> eol()
+    <INTEGER> <INTEGER> <COLON> <END> eol()
+    
+    <DASHES> <KS> <DASHES> eol()
+    
+    (
+    {stack = "";}
 
+    cpu=<INTEGER> eol()
+    function=<STACKELEM> eol()
+    (stackelem=<STACKELEM> eol() {stack = stack+stackelem+":";})*
+    count=<INTEGER> eol()
 
+    { funcstr = ""; }
+    { funcstr = funcstr + function; }
+    { funcstr = funcstr.replace('\'', '^'); }
+    { System.out.print(sql); }
+    { System.out.print(eid +", "+ rid + ", " + eol +", "+ events +", "+ "'" + ticks + "'" + ", "+ cpu +", "+ count +", " + "'" + funcstr  + "'" + ", " + "'" + stack + "'" +") ;\n"); }
+
+    )+
 
 
 
