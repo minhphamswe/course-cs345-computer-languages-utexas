@@ -9,3 +9,7 @@
 
 # Java Build products
 *.class
+
+# ReL Build products
+tools/ReL/build
+tools/ReL/dist
