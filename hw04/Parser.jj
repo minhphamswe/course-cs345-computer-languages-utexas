@@ -1,0 +1,97 @@
+/**
+ * Student: Minh Pham
+ * UTEID: mlp2279
+ * CSID: minhpham
+ * Section: TTh 5:30-6:00pm
+ * TA: benself
+ * 
+ * Homework 4 - Problem 3:
+ * Write a parser in javacc that converts scheme let expressions to
+ * lambda applications as shown in PLAI 3 & HLL 3, page 3.
+ * 
+ * Hint: You might want to take the crono grammar, remove the crono
+ * ast items, the actions and return values from non­terminals and then
+ * add your own return values and actions.
+ * 
+ * The output from the following expression:
+ * 
+ * echo "(let ((H .001)) (let ((f (lambda (x) (* x x x x)))) (let ((d/dx (lambda (x) (/ (­ (f (+ x H))(f x)) H))))
+(d/dx 10))))" | java Parser
+ * 
+ * should look something like the following:
+ * ( (lambda (H) ( (lambda (f) ( (lambda (d/dx) ( d/dx 10))( lambda( x)( /( ­( f( + x H))( f x)) H))))( lambda( x)(
+* x x x x)))) .001)
+ */
+options {
+}
+
+PARSER_BEGIN(Parser)
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Iterator;
+
+public class Parser {
+    public static void main(String args[]) throws ParseException {
+        Parser parser = new Parser (System.in);
+        parser.parse();
+    }
+}
+
+PARSER_END(Parser)
+
+SKIP :
+{
+    " "
+  | "\t"
+  | "\n"
+  | "\r"
+  | <"//" (~["\n","\r"])* ("\n"|"\r")> 
+}
+
+TOKEN:
+{
+      < LPAREN  : "(" >
+    | < RPAREN  : ")" >
+    | < LCURLY  : "{" >
+    | < RCURLY  : "}" >
+    | < SCOLON  : ";" >
+    | < DOT     : "." >
+    | < PLUS    : "+" >
+    | < MINUS   : "-" >
+    | < STAR    : "*" >
+    | < SLASH   : "/" >
+    | < DIGIT   : ["0"-"9"] >
+    | < DIGITS  : (["0"-"9"])+ >
+}
+
+TOKEN:  /* Literals */
+{
+    < INTEGER:    (["0"-"9"])+ >
+}
+
+Integer integer():
+{ Token n;
+  String s;}
+{
+    n = <DIGITS> | <MINUS><DIGITS>
+    { return new Integer(""+n); }
+}
+
+void parse():
+{ Token n; }
+{
+     n = <INTEGER> { System.out.print(" (num " + n +")"); }
+   | list()
+}
+
+void list() :
+{}
+{
+     LOOKAHEAD(2) <LPAREN> <PLUS>  { System.out.print(" (add");} ( integer() )* <RPAREN> { System.out.print(")"); }
+   | LOOKAHEAD(2) <LPAREN> <MINUS> { System.out.print(" (sub");} ( integer() )* <RPAREN> { System.out.print(")"); }
+   | LOOKAHEAD(2) <LPAREN> <STAR>  { System.out.print(" (mul");} ( integer() )* <RPAREN> { System.out.print(")"); }
+   |              <LPAREN> <SLASH> { System.out.print(" (div");} ( integer() )* <RPAREN> { System.out.print(")"); }
+}
+
