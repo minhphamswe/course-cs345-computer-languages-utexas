@@ -105,17 +105,17 @@
     (mul (l r)  (num* (interp l ds) (interp r ds)))
     (div (l r)  (num/ (interp l ds) (interp r ds)))
     (id  (name) (lookup name ds))
-     (fun (arg-name body) (closureV arg-name body ds))
-     (app (fun-exp arg-exp)
-          (let ((the-fun (interp fun-exp ds))
-                (the-arg (interp arg-exp ds)))
-            (type-case FAE-value the-fun
-              (closureV (arg-name body closure-ds)
-                        (interp body (aSub arg-name the-arg
-                                           ; ds))) ;-> dynamic scope
-                                           ;(mtSub)))) ;-> function can only see its own arguments
-                                           closure-ds))) ;-> static scope
-              (else (error "You can only apply closures!")))))))
+    (fun (arg-name body) (closureV arg-name body ds))
+    (app (fun-exp arg-exp)
+         (let ((the-fun (interp fun-exp ds))
+               (the-arg (interp arg-exp ds)))
+           (type-case FAE-value the-fun
+             (closureV (arg-name body closure-ds)
+                       (interp body (aSub arg-name the-arg
+                                          ; ds))) ;-> dynamic scope
+                                          ;(mtSub)))) ;-> function can only see its own arguments
+                                          closure-ds))) ;-> static scope
+             (else (error "You can only apply closures!")))))))
 ;Examples that trigger the "You can only apply closures!" error:
 '{with {f {fun {x} {+ x x}}}
     {with {g 3}
@@ -134,7 +134,9 @@
 (test (interp (parse '{with {double {fun {x} {+ x x}}} {double 5}}) (mtSub)) (numV 10))
 ;(let ((double (lambda (x) (+ x x)))) (funcall double 5)) - this works in jdblisp
 
-; The following example will give (numV 9) for Dynamic Scoping and (numV 7) for Static Scoping. See line 161 to change between these.
+; The following example will give (numV 9) for Dynamic Scoping
+; and (numV 7) for Static Scoping.
+; See line 161 to change between these.
 (interp (parse '{with {x 3}
                             {with {f {fun {y} {+ x y}}}
                                   {with {x 5}
@@ -155,5 +157,21 @@
               (aSub 'f (closureV 'y (add (id 'x) (id 'y))
                                  (aSub 'x (numV 10) (mtSub)))
                     (aSub 'x (numV 10) (mtSub)))))
-              
-                    
+
+;; Implementation of numeric derivation using with and fun
+;(interp 
+ (parse '(with (H 0.0001)
+                      (with (func (fun (x) (* x x)))
+                            (with (d/dx (fun (f) (/ (- (f (+ x H)) (f x)) H)))
+                                  ((d/dx func) 10))))); (mtSub))
+
+;; Implementation of numeric derivation by passing environment
+(interp (parse '(d/dx 10))
+        (aSub 'd/dx (closureV 'x (div (sub (app (id 'f) (add (id 'x) (id 'H))) 
+                                           (app (id 'f) (id 'x)))
+                                      (id 'H))
+                              (aSub 'f (closureV 'x (mul (id 'x) (id 'x)) (mtSub))
+                                    (aSub 'H (numV 0.0001)
+                                          (mtSub))))
+              (aSub 'f (closureV 'x (mul (id 'x) (id 'x)) (mtSub))
+                                    (aSub 'H (numV 0.0001) (mtSub)))))
