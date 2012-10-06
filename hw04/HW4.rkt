@@ -138,9 +138,9 @@
 ; and (numV 7) for Static Scoping.
 ; See line 161 to change between these.
 (interp (parse '{with {x 3}
-                            {with {f {fun {y} {+ x y}}}
-                                  {with {x 5}
-                                        {f 4}}}}) (mtSub))
+                      {with {f {fun {y} {+ x y}}}
+                            {with {x 5}
+                                  {f 4}}}}) (mtSub))
 
 (interp (parse '(a b))
         (aSub 'b (numV 6)
@@ -159,11 +159,12 @@
                     (aSub 'x (numV 10) (mtSub)))))
 
 ;; Implementation of numeric derivation using with and fun
-;(interp 
+(interp 
  (parse '(with (H 0.0001)
-                      (with (func (fun (x) (* x x)))
-                            (with (d/dx (fun (f) (/ (- (f (+ x H)) (f x)) H)))
-                                  ((d/dx func) 10))))); (mtSub))
+               (with (func (fun (x) (* x x)))
+                     (with (d/dx (fun (f)
+                                      (fun (x) (/ (- (f (+ x H)) (f x)) H))))
+                           ((d/dx func) 10))))) (mtSub))
 
 ;; Implementation of numeric derivation by passing environment
 (interp (parse '(d/dx 10))
