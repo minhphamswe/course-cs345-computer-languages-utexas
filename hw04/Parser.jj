@@ -15,8 +15,7 @@
  * 
  * The output from the following expression:
  * 
- * echo "(let ((H .001)) (let ((f (lambda (x) (* x x x x)))) (let ((d/dx (lambda (x) (/ (­ (f (+ x H))(f x)) H))))
-(d/dx 10))))" | java Parser
+ * echo "(let ((H .001)) (let ((f (lambda (x) (* x x x x)))) (let ((d/dx (lambda (x) (/ (­ (f (+ x H))(f x)) H)))) (d/dx 10))))" | java Parser
  * 
  * should look something like the following:
  * ( (lambda (H) ( (lambda (f) ( (lambda (d/dx) ( d/dx 10))( lambda( x)( /( ­( f( + x H))( f x)) H))))( lambda( x)(
@@ -27,10 +26,60 @@ options {
 
 PARSER_BEGIN(Parser)
 
-import java.io.*;
+//package edu.utexas.minhpham.lobo;
+
+import java.lang.String;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Iterator;
+
+class Cons {
+    private Object car;
+    private Cons cdr;
+    
+    public Cons(Object car_, Cons cdr_) {
+        this.car = car_;
+        this.cdr = cdr_;
+    }
+    
+    public static Object car(Cons lst) {
+        return (lst == null) ? null : lst.car;
+    }
+    
+    public static Cons cdr(Cons lst) {
+        return (lst == null) ? null : lst.cdr;
+    }
+    
+    public static Cons cons(Object first, Cons rest) {
+        return new Cons(first, rest);
+    }
+    
+    public static boolean consp (Object o) {
+        return ( (o != null) && (o instanceof Cons) );
+    }
+    
+    public static Cons list(Object ... elems) {
+       Cons list = null;
+       for (int i = elems.length-1; i >= 0; i--) {
+           list = cons(elems[i], list);
+       }
+       return list;
+   }
+    
+    public String toString() {
+        return toString(this);
+    }
+    
+    public static String toString(Cons lst) {
+        return "(" + toStringInternal(lst);
+    }
+    
+    public static String toStringInternal(Cons lst) {
+        return ((lst == null) ? ")"
+                                : ((car(lst) == null) ? "()" : car(lst).toString())
+                                + ((cdr(lst) == null) ? ")" : " " + toStringInternal(cdr(lst))));
+   }
+}
 
 public class Parser {
     public static void main(String args[]) throws ParseException {
@@ -56,42 +105,107 @@ TOKEN:
     | < RPAREN  : ")" >
     | < LCURLY  : "{" >
     | < RCURLY  : "}" >
-    | < SCOLON  : ";" >
+    | < SCOLON  : ";" >             // Comment marker
     | < DOT     : "." >
-    | < PLUS    : "+" >
-    | < MINUS   : "-" >
-    | < STAR    : "*" >
-    | < SLASH   : "/" >
-    | < DIGIT   : ["0"-"9"] >
-    | < DIGITS  : (["0"-"9"])+ >
+
+    | < QUOTE   : "'" >             // Quote
+    | < BKQUOTE : "`" >             // Backquote
+    | < COMMA   : "," >             // Backquote exit
 }
 
 TOKEN:  /* Literals */
 {
-    < INTEGER:    (["0"-"9"])+ >
+      < INTEGER: (["0"-"9"])+ | "-" (["0"-"9"])+ >
+    | < DOUBLE : (["0"-"9"])+"."(["0"-"9"])+ | "-" (["0"-"9"])+"."(["0"-"9"])+ >
+    | < STRING : "\"" (["a"-"z", "A"-"Z"," ",
+                "0"-"9", "~", "`", "!", "@", "#", "$", "/", "^", "&", "*", "_",
+                "-", "=", "+", "{", "}", "[", "]","(",")", "|", "\\", ":", ";", "<",
+                ">", ",", ".", "?","'","%"])* "\"" >
+    | < SYMBOL : (["a"-"z", "A"-"Z",
+                "0"-"9", "~", "`", "!", "@", "#", "$", "/", "^", "&", "*", "_",
+                "-", "=", "+", "{", "}", "[", "]", "|", "\\", ":", ";", "<",
+                ">", ",", ".", "?", "'", "\""])+ >
 }
 
-Integer integer():
-{ Token n;
-  String s;}
-{
-    n = <DIGITS> | <MINUS><DIGITS>
-    { return new Integer(""+n); }
-}
-
-void parse():
+Object number():
 { Token n; }
 {
-     n = <INTEGER> { System.out.print(" (num " + n +")"); }
-   | list()
+      n = <INTEGER>   { return new Integer(""+n); }
+    | n = <DOUBLE>    { return new Float(""+n); }
 }
 
-void list() :
-{}
+Object atom():
+{ Token n; }
 {
-     LOOKAHEAD(2) <LPAREN> <PLUS>  { System.out.print(" (add");} ( integer() )* <RPAREN> { System.out.print(")"); }
-   | LOOKAHEAD(2) <LPAREN> <MINUS> { System.out.print(" (sub");} ( integer() )* <RPAREN> { System.out.print(")"); }
-   | LOOKAHEAD(2) <LPAREN> <STAR>  { System.out.print(" (mul");} ( integer() )* <RPAREN> { System.out.print(")"); }
-   |              <LPAREN> <SLASH> { System.out.print(" (div");} ( integer() )* <RPAREN> { System.out.print(")"); }
+    n = <DOUBLE>  { return new Float(""+n); }
+  | n = <STRING>  { return new String(""+n); }
+  | n = <INTEGER> { return new Integer(""+n); }
+  | n = <SYMBOL>   { return new String(""+n); }
 }
 
+// Parsing inside a list environment
+Cons list() :
+{ Object o; }
+{
+      o = atom()                    { return Cons.cons(o, list()); }
+    | <LPAREN> o = list()           { return Cons.cons(o, list()); }
+    | <RPAREN>                      { return null; }
+    | <EOF>     { throw new ParseException("Mismatched parenthesis."); }
+}
+
+// Applying function car to cdr
+//~ Object apply(Object fun, Cons lst) :
+//~ { }
+//~ { 
+    //~ { 
+    //~ if (fun.toString().equals("let")) {
+        //~ Object a = Cons.car((Cons) Cons.car((Cons) Cons.car(lst)));
+        //~ Object b = Cons.car(Cons.cdr((Cons) Cons.car((Cons) Cons.car(lst))));
+        //~ Object c = Cons.car(Cons.cdr(lst));
+        //~ Cons lambda = Cons.list(Cons.list("lambda", Cons.list(a), apply(Cons.car((Cons)c), Cons.cdr((Cons) c)), b));
+        //~ return lambda;
+        //~ 
+    //~ }
+    //~ else {
+        //~ throw new ParseException("Unknown function: " + fun);
+    //~ }
+    //~ return fun;
+    //~ }
+//~ }
+
+Object eval(Object sexp) :
+{ }
+{
+    {
+        if (Cons.consp(sexp)) {
+            Object fun = Cons.car((Cons) sexp);
+            Cons lst = Cons.cdr((Cons) sexp);
+            
+            if (fun.toString().equals("let")) {
+                Object a = Cons.car((Cons) Cons.car((Cons) Cons.car(lst)));
+                Object b = Cons.car(Cons.cdr((Cons) Cons.car((Cons) Cons.car(lst))));
+                Object c = Cons.car(Cons.cdr(lst));
+                Cons lambda = Cons.list(Cons.list("lambda", Cons.list(a), eval(c)), b);
+                return lambda;
+                //~ return c;
+            }
+            else {
+                return sexp;
+                //~ throw new ParseException("Unknown function: " + fun);
+            }
+        }
+        else {
+            return sexp;
+        }
+    }
+}
+
+// Parsing in global environment
+void parse():
+{ Object o; }
+{
+    o = atom()                              { System.out.print("(num " + o +")"); }
+    | <QUOTE><LPAREN> o = list()            { System.out.print(o); }
+    | <LPAREN> o = eval(list())             { System.out.print(o); }
+    { System.out.println(); }
+}
