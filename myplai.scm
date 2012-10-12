@@ -36,6 +36,7 @@
          )))))
 
 ;; subst : WAE symbol WAE!WAE
+;; Substitute sub-id in expr for val
 (define (subst expr sub-id val)
   (type-case WAE expr
              (num (n) expr)
@@ -45,9 +46,14 @@
                              (subst r sub-id val)))
              (with (bound-id named-expr bound-body)
                    (if (symbol=? bound-id sub-id)
+                       ; bound-id == sub-id: substitute into
+                       ; the expression inside the with
                        (with bound-id
                              (subst named-expr sub-id val)
                              bound-body)
+                       ; bound-id != sub-id: substitute into
+                       ; the expression inside the with and
+                       ; also into the sub-id
                        (with bound-id
                              (subst named-expr sub-id val)
                              (subst bound-body sub-id val))))

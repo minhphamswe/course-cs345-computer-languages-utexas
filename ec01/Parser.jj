@@ -1,0 +1,301 @@
+/**
+ * Student: Minh Pham
+ * UTEID: mlp2279
+ * CSID: minhpham
+ * Section: TTh 5:30-6:00pm
+ * TA: benself
+ * 
+ * Extra Credit 01:
+ * Using javacc build a parser for the relation arithmetic language
+ * defined in the solution to Homework #1, problem # 1, and build an
+ * interpreter that will do proofs in a manner similar to this solution.
+ * Call this system fas for formal arithmetic system.
+ */
+options {
+}
+
+PARSER_BEGIN(Parser)
+
+import java.lang.String;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Iterator;
+
+class Cons {
+    private Object car;
+    private Cons cdr;
+
+    public Cons(Object car_, Cons cdr_) {
+        this.car = car_;
+        this.cdr = cdr_;
+    }
+
+    public static Object car(Cons lst) {
+        return (lst == null) ? null : lst.car;
+    }
+    
+    public Object car() {
+        return this.car;
+    }
+
+    public Cons cdr() {
+        return this.cdr;
+    }
+    
+    public Cons next() {
+        return (this.cdr == null) ? this : this.cdr;
+    }
+
+    public static Cons cdr(Cons lst) {
+        return (lst == null) ? null : lst.cdr;
+    }
+    
+    public static Cons cons(Object first, Cons rest) {
+        return new Cons(first, rest);
+    }
+    
+    public void setcar(Object obj) {
+        this.car = obj;
+    }
+    
+    public void setcdr(Cons cns) {
+        this.cdr = cns;
+    }
+
+    public static Cons push(Cons lst, Object obj) {
+        if (lst == null) {
+            return list(obj);
+        }
+        else {
+            Cons iter = lst;
+            while (cdr(iter) != null) {
+                iter = cdr(iter);
+            }
+            iter.cdr = list(obj);
+            return lst;
+        }
+    }
+    
+    public static boolean consp (Object o) {
+        return ( (o != null) && (o instanceof Cons) );
+    }
+    
+    public static Cons list(Object ... elems) {
+       Cons list = null;
+       for (int i = elems.length-1; i >= 0; i--) {
+           list = cons(elems[i], list);
+       }
+       return list;
+   }
+
+    public String toString() {
+        return toString(this);
+    }
+    
+    public static String toString(Cons lst) {
+        return "(" + toStringInternal(lst);
+    }
+    
+    public static String toStringInternal(Cons lst) {
+        return ((lst == null) ? ")"
+                                : ((car(lst) == null) ? "()" : car(lst).toString())
+                                + ((cdr(lst) == null) ? ")" : " " + toStringInternal(cdr(lst))));
+   }
+}
+
+public class Parser {
+    public static void main(String args[]) throws ParseException {
+        Parser parser = new Parser (System.in);
+        parser.parse();
+    }
+}
+
+PARSER_END(Parser)
+
+SKIP :
+{
+    " "
+  | "\t"
+  | "\n"
+  | "\r"
+  | <"//" (~["\n","\r"])* ("\n"|"\r")> 
+}
+
+TOKEN:
+{
+      < LPAREN  : "(" >
+    | < RPAREN  : ")" >
+    | < LCURLY  : "{" >
+    | < RCURLY  : "}" >
+    | < SCOLON  : ";" >             // Comment marker
+    | < DOT     : "." >
+
+    | < QUOTE   : "'" >             // Quote
+    | < BKQUOTE : "`" >             // Backquote
+    | < COMMA   : "," >             // Backquote exit
+}
+
+TOKEN:  /* Literals */
+{
+        < QINTEGER: "0"("'")* >
+    | < INTEGER: (["0"-"9"])+ | "-" (["0"-"9"])+ >
+    | < DOUBLE : (["0"-"9"])+"."(["0"-"9"])+ | "-" (["0"-"9"])+"."(["0"-"9"])+ >
+    | < LET     : "let" >
+    | < PD      : "pd" >
+    | < ADD     : "add" >
+    | < MULT     : "mult" >
+    | < STRING : "\"" (["a"-"z", "A"-"Z"," ",
+                "0"-"9", "~", "`", "!", "@", "#", "$", "/", "^", "&", "*", "_",
+                "-", "=", "+", "{", "}", "[", "]","(",")", "|", "\\", ":", ";", "<",
+                ">", ",", ".", "?","'","%"])* "\"" >
+    | < SYMBOL : (["a"-"z", "A"-"Z",
+                "0"-"9", "~", "`", "!", "@", "#", "$", "/", "^", "&", "*", "_",
+                "-", "=", "+", "{", "}", "[", "]", "|", "\\", ":", ";", "<",
+                ">", ",", ".", "?", "'", "\""])+ >
+}
+
+Object atom():
+{ Token n; }
+{
+    n = <DOUBLE>  { return new Float(""+n); }
+  | n = <STRING>  { return new String(""+n); }
+  | n = <INTEGER> { return new Integer(""+n); }
+  | n = <SYMBOL>   { return new String(""+n); }
+}
+
+// Parsing inside a list environment
+Cons list() :
+{ 
+    Object obj;
+    Cons ret;
+}
+{
+    {
+        ret = null;
+    }
+    <LPAREN>
+    (
+      obj = atom()  { ret = Cons.push(ret, obj); }
+    | obj = list()  { ret = Cons.push(ret, obj); }
+    | obj = let()   { ret = (Cons) obj; }
+    | LOOKAHEAD(3) obj = addp()  { ret = (Cons) obj; }
+    | LOOKAHEAD(3) obj = mulp()  { ret = (Cons) obj; }
+    | <EOF>     { throw new ParseException("Mismatched parenthesis."); }
+    )*
+    <RPAREN>    { return ret; }
+}
+
+Cons let() :
+{
+    Object a, b, c;
+    Cons lambda;
+}
+{   
+    (
+    <LET>
+    <LPAREN>
+    <LPAREN>
+    a = atom()
+    (b = atom() | b = list())
+    <RPAREN>
+    <RPAREN>
+    (c = list() | c = atom())
+    )
+
+    {
+        lambda = Cons.list(Cons.list("lambda", Cons.list(a), c), b);
+        return lambda;
+    }
+}
+
+Cons addp() :
+{   
+    Token x, y;
+    String sx, sy;
+}
+{
+    x = <QINTEGER>  { sx = x.toString(); }
+    y = <QINTEGER>  { sy = y.toString(); }
+    <ADD>
+    { return add(sx, sy); }
+}
+
+Cons add(String sx, String sy) :
+{
+    Cons print;
+    Cons result;
+}
+{{
+    if (sy.equals("0")) {
+        result = Cons.list(sx, sy, sx);
+        print = Cons.list(sx, sy, sx);
+    }
+    else {
+        result = Cons.list(sx, sy, ss(Cons.car(Cons.cdr(Cons.cdr(add(sx, pd(sy))))).toString()));
+        print = Cons.list(sx, sy, Cons.list(sx, pd(sy), "add").toString()+"'");
+    }
+    if (!print.toString().equals(result.toString())) {
+        System.out.println("\t" + print);
+    }
+    System.out.println("\t" + result);
+    return result;
+}}
+
+Cons mulp() :
+{   
+    Token x, y;
+    String sx, sy;
+}
+{
+    x = <QINTEGER>  { sx = x.toString(); }
+    y = <QINTEGER>  { sy = y.toString(); }
+    <MULT>
+    { return mul(sx, sy); }
+}
+
+Cons mul(String sx, String sy) :
+{
+    Cons print;
+    Cons ret;
+}
+{{
+    if (sy.equals("0")) {
+        ret = Cons.list(sx, sy, "0");
+        print = Cons.list(sx, sy, "0");
+    }
+    else {
+        ret = Cons.list(sx, sy, Cons.car(Cons.cdr(Cons.cdr(add(Cons.car(Cons.cdr(Cons.cdr(mul(sx, pd(sy))))).toString(), sx)))));
+        print = Cons.list(sx, sy, Cons.list(Cons.list(sx, pd(sy), "mult").toString(), sx, "add"));
+    }
+    if (!print.toString().equals(ret.toString())) {
+        System.out.println(print);
+    }
+    System.out.println(ret);
+    return ret;
+}}
+
+String pd(String sx) :
+{}
+{{  
+    if (sx.equals("0")) {
+        return sx;
+    }
+    else {
+        return sx.substring(0, sx.length()-1);
+    }
+}}
+
+String ss(String sx) :
+{}
+{{  return sx + "'"; }}
+
+// Parsing in global environment
+void parse():
+{ Object o; }
+{
+    (
+      o = atom()    { System.out.println("\t" + o); }
+    | o = list()    { System.out.println("\t" + o); }
+    )*
+}
+
