@@ -18,4 +18,4 @@ submit:
 	make clean
 	rm -f fas.zip
 	zip -r fas.zip ./
-	turnin --submit benself cs345_ec1 fas.zip
+	turnin --submit benself CS345_EC1 fas.zip

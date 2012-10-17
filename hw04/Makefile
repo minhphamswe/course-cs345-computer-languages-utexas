@@ -8,4 +8,4 @@ clean:
 	rm -f *.class *.java
 
 submit:
-	turnin ­--submit benself CS345_HW4 HW4.scm HW4.rkt Parser.jj
+	turnin --submit benself CS345_HW4 HW4.scm HW4.rkt Parser.jj
