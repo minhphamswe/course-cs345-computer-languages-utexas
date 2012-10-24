@@ -45,7 +45,7 @@ for num in range(1, 5):
       fn = 'Kid2'
       ln = 'DummyDawer'
    INSERT PERSONT ( personid := num , firstname := fn , lastname := ln , zipcode := 78700 + num);
-   
+
 z=10
 INSERT INTO PERSONT ( personid, firstname, lastname, zipcode ) VALUES ( 5, 'SQLKid', 'DummyDawer', (lambda x: 78700 + x)(z));
 
@@ -72,7 +72,7 @@ print
 
 #Modify Statements
 
-#dva modify 
+#dva modify
 MODIFY LIMIT = 1 PERSONT ( zipcode := 61511 ) WHERE firstname = "Alice" AND lastname = "Dawer";
 
 #eva modify
