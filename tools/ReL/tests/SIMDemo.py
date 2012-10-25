@@ -121,5 +121,4 @@ output=FROM PERSONT RETRIEVE firstname OF spouse OF children WHERE firstname="Bi
 neatPrintTable(output)
 
 ENTAIL
-output=FROM PERSONT RETRIEVE * WHERE TRUE;
-neatPrintTable(output)
+
