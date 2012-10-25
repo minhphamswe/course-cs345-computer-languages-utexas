@@ -556,19 +556,18 @@ import org.python.util.SQLVisitor;
                     String sparql = parseSIM(elements, sqlstrings, server, uname, pword, ctype, conn);
                     if ( ! sparql.equals(""))
                         runAndOutputTuples(sparql, stmt);
+                } else if (mode.equals("SPARQL")) {
+                    this.sDoer = new SPARQLDoer(conn, uname);
+                    sDoer.executeStatement("BEGIN \n" +
+                                           "sem_apis.create_entailment( \n" +
+                                           "  'RDF_ENT_cs345_mlp2279', \n" +
+                                           "  models_in         => sem_models('RDF_MODEL_cs345_mlp2279'), \n" +
+                                           "  rulebases_in      => sem_rulebases('owl2rl'), \n" +
+                                           "  passes            => SEM_APIS.REACH_CLOSURE, \n" +
+                                           "  options           => 'LOCAL_NG_INF=T' \n" +
+                                           "); \n" +
+                                           "END; \n");
                 }
-                //                else if (mode.equals("SPARQL")) {
-                //  this.sDoer = new SPARQLDoer(conn, uname);
-                //  sDoer.executeStatement("BEGIN \n" +
-                //                         "sem_apis.create_entailment( \n" +
-                //                         "  'RDF_ENT_CS345_mlp2279', \n" +
-                //                         "  models_in         => sem_models('RDF_MODEL_CS345_mlp2279'), \n" +
-                //                         "  rulebases_in      => sem_rulebases('owl2rl'), \n" +
-                //                         "  passes            => SEM_APIS.REACH_CLOSURE, \n" +
-                //                         "  options           => 'LOCAL_NG_INF=T' \n" +
-                //                         "); \n" +
-                //                         "END; \n");
-                //}
                 else if (mode.equals("SQL") && !(asp_select || prolog_select)) {
                     // SQL PROCESSING
                     String[] strings = sqlstrings.split(";");

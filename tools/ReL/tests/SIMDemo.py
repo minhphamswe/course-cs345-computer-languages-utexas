@@ -1,7 +1,7 @@
 from NeatPrint import neatPrintTable
 
 print("connecting")
-MAKECONNECT URL jdbc:oracle:thin:@rising-sun.microlab.cs.utexas.edu:1521:orcl UNAME CS345_demo PWORD orcl_demo;
+MAKECONNECT URL jdbc:oracle:thin:@rising-sun.microlab.cs.utexas.edu:1521:orcl UNAME cs345_mlp2279 PWORD orcl_mlp2279;
 print("dropping tables");
 DROP TABLE RDF_DATA;
 DROP TABLE RDF_DATA_TABLE;
@@ -45,7 +45,7 @@ for num in range(1, 5):
       fn = 'Kid2'
       ln = 'DummyDawer'
    INSERT PERSONT ( personid := num , firstname := fn , lastname := ln , zipcode := 78700 + num);
-
+   
 z=10
 INSERT INTO PERSONT ( personid, firstname, lastname, zipcode ) VALUES ( 5, 'SQLKid', 'DummyDawer', (lambda x: 78700 + x)(z));
 
@@ -72,7 +72,7 @@ print
 
 #Modify Statements
 
-#dva modify
+#dva modify 
 MODIFY LIMIT = 1 PERSONT ( zipcode := 61511 ) WHERE firstname = "Alice" AND lastname = "Dawer";
 
 #eva modify
@@ -118,4 +118,8 @@ output=FROM PERSONT RETRIEVE firstname OF children  WHERE firstname="Alice";
 neatPrintTable(output)
 
 output=FROM PERSONT RETRIEVE firstname OF spouse OF children WHERE firstname="Bill";
+neatPrintTable(output)
+
+ENTAIL
+output=FROM PERSONT RETRIEVE * WHERE TRUE;
 neatPrintTable(output)

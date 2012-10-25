@@ -1,12 +1,4 @@
 /*
-Student: Minh Pham
-UTEID: mlp2279
-CSID: minhpham
-Section: TTh 5:30-6:00pm
-TA: benself
-*/
-
-/*
  [The 'BSD licence']
  Copyright (c) 2004 Terence Parr and Loring Craymer
  All rights reserved.
@@ -177,8 +169,11 @@ import org.python.antlr.ast.Connection;
 
 @members {
     private ErrorHandler errorHandler;
+
     private GrammarActions actions = new GrammarActions();
+
     private String encoding;
+
     public void setErrorHandler(ErrorHandler eh) {
         this.errorHandler = eh;
         actions.setErrorHandler(eh);
@@ -230,6 +225,7 @@ public boolean single = false;
 //If you want to use another error recovery mechanism change this
 //and the same one in the parser.
 private ErrorHandler errorHandler;
+
     public void setErrorHandler(ErrorHandler eh) {
         this.errorHandler = eh;
     }
@@ -371,6 +367,7 @@ eval_input
         retval.tree = new ErrorMod(badNode);
     }
 
+
 //not in CPython's Grammar file
 dotted_attr
     returns [expr etype]
@@ -434,12 +431,8 @@ decorator
     ( LPAREN
       ( arglist
         {
-            $etype = actions.makeCall($LPAREN,
-                                      $dotted_attr.etype,
-                                      $arglist.args,
-                                      $arglist.keywords,
-                                      $arglist.starargs,
-                                      $arglist.kwargs);
+            $etype = actions.makeCall($LPAREN, $dotted_attr.etype, $arglist.args, $arglist.keywords,
+                     $arglist.starargs, $arglist.kwargs);
         }
       |
         {
@@ -525,30 +518,21 @@ varargslist
 }
     : d+=defparameter[defaults] (options {greedy=true;}:COMMA d+=defparameter[defaults])*
       (COMMA
-            (
-                  STAR starargs=NAME (COMMA DOUBLESTAR kwargs=NAME)?
-                | DOUBLESTAR kwargs=NAME
-            )?
+          (STAR starargs=NAME (COMMA DOUBLESTAR kwargs=NAME)?
+          | DOUBLESTAR kwargs=NAME
+          )?
       )?
-        {
-            $args = actions.makeArgumentsType($varargslist.start,
-                                              $d,
-                                              $starargs,
-                                              $kwargs,
-                                              defaults);
-        }
+      {
+          $args = actions.makeArgumentsType($varargslist.start, $d, $starargs, $kwargs, defaults);
+      }
     | STAR starargs=NAME (COMMA DOUBLESTAR kwargs=NAME)?
-        {
-            $args = actions.makeArgumentsType($varargslist.start,
-                                              $d,
-                                              $starargs,
-                                              $kwargs,
-                                              defaults);
-        }
+      {
+          $args = actions.makeArgumentsType($varargslist.start, $d, $starargs, $kwargs, defaults);
+      }
     | DOUBLESTAR kwargs=NAME
-        {
-            $args = actions.makeArgumentsType($varargslist.start,$d, null, $kwargs, defaults);
-        }
+      {
+          $args = actions.makeArgumentsType($varargslist.start, $d, null, $kwargs, defaults);
+      }
     ;
 
 //fpdef: NAME | '(' fplist ')'
@@ -1741,7 +1725,7 @@ atom
            etype = new Str(actions.extractStringToken($S), actions.extractStrings($S, encoding));
        }
      //make sqlstmt here, use tuple from testlist_gexp as example
-    //might need to watch out for last test, not sure if that is requires at end bc of start state.
+    //might need to watch out for last test, not sure if that is requires at end bc of start state. 
     //maybe make dummy end expr somehow and put on tree?
     | sql_stmt
     ->sql_stmt
@@ -1802,13 +1786,13 @@ scope{
 	|	(PRO PRSO{$prolog_stmt::strings.add($PRSO.text);} prologsave RBRACK (PLUS {$prolog_stmt::append=true;})? DOT
 		{$prolog_stmt::strings.add($prolog_stmt::temp);}
 	-> ^(PRSO<Tuple>[$prolog_stmt.start, actions.castExprs($prolog_stmt::exprs), $expr::ctype, $prolog_stmt::strings, $prolog_stmt::append, false,""]))
-	|  (PRO_SELECT {$prolog_stmt::strings.add($PRO_SELECT.text);} NAME{$prolog_stmt::strings.add($NAME.text);}
+	|  (PRO_SELECT {$prolog_stmt::strings.add($PRO_SELECT.text);} NAME{$prolog_stmt::strings.add($NAME.text);} 
 	-> ^(PRO_SELECT<Tuple>[$prolog_stmt.start, actions.castExprs($prolog_stmt::exprs), $expr::ctype, $prolog_stmt::strings, $prolog_stmt::append, false,""]))
 	)
 	;
-
+	
 prologinsert
-	: prologqueryfragment (PRIMP {$prolog_stmt::temp+=":-";}
+	: prologqueryfragment (PRIMP {$prolog_stmt::temp+=":-";} 
 	prologqueryfragment (s2=COMMA {$prolog_stmt::temp+=$s2.text;}
 	prologqueryfragment)*)?
 	;
@@ -1818,45 +1802,45 @@ prologload
 	: 	s = prologloadfragment {$prolog_stmt::temp+=$s.text;}
 	|	prologexpr
 	;
-
+	
 prologloadfragment
-	:	(DIGITS)* NAME DOT NAME
+	:	(DIGITS)* NAME DOT NAME	
 	;
-
+	
 prologquery
 	:	prologqueryfragment
 	;
-
+	
 prologqueryfragment
 	:	prologatom
 		(LPAREN {$prolog_stmt::temp+="(";}
 		prologqueryinterior (s2=COMMA {$prolog_stmt::temp+=$s2.text;}
-		prologqueryinterior)*
-		RPAREN {$prolog_stmt::temp+=")";})?
+		prologqueryinterior)* 
+		RPAREN {$prolog_stmt::temp+=")";})? 
 	;
-
+	
 prologqueryinterior
 	:	s3=STRING {$prolog_stmt::temp+=$s3.text;}
-	|	prologexpr
+	|	prologexpr 
 	;
-
+	
 prologatom
 	:	e = atom
 	{$prolog_stmt::exprs.add(actions.castExpr($e.tree));
 	$prolog_stmt::strings.add($prolog_stmt::temp);
-	$prolog_stmt::temp=""; }
+	$prolog_stmt::temp=""; }	
 	;
-
+	
 prologsave
 	: prologload
 	| s1=CLEAR {$prolog_stmt::temp+=$s1.text;}
 	;
-
+	
 prologexpr
-	:	e = expr[expr_contextType.Load]
+	:	e = expr[expr_contextType.Load] 
 	{$prolog_stmt::exprs.add(actions.castExpr($e.tree));
 	$prolog_stmt::strings.add($prolog_stmt::temp);
-	$prolog_stmt::temp=""; }
+	$prolog_stmt::temp=""; }	
 	;
 //============================================================================
 /** ASP Syntax:			  asp_load:  	    ASP ?[expr].
@@ -1883,12 +1867,12 @@ prologexpr
 						  					aspnot(<=)aspnot
 						  					aspnot(>=)aspnot
 						  aspnot:			(not)* atom
-
+	
 	What some ASP Syntax means:
 						p(1..3). => p(1). p(2). p(3).
 						p(x;q;l) => p(x). p(q). p(l).
-
-
+	
+						  
 	Replacements from
 	normal ASP:				Original	|		New
 								:-		|		:=
@@ -1910,7 +1894,7 @@ scope{
 	List exprs;
 	List strings;
 	String temp;
-
+	
 }
 @init{
 	expr etype = null;
@@ -1945,11 +1929,11 @@ scope{
 	(ASP PRSO{$asp_stmt::strings.add($PRSO.text);} aspsave RBRACK (PLUS {$asp_stmt::append=true;})? DOT
 		{$asp_stmt::strings.add($asp_stmt::temp);}
 	-> ^(PRSO<Tuple>[$asp_stmt.start, actions.castExprs($asp_stmt::exprs), $expr::ctype, $asp_stmt::strings, $asp_stmt::append, true, $asp_stmt::dir])) |
-	(ASP_SELECT (REG_FACT{$asp_stmt::strings.add("reg_fact");} | GROUP_FACT{$asp_stmt::strings.add("group_fact");}) NAME{$asp_stmt::strings.add($NAME.text);}
+	(ASP_SELECT (REG_FACT{$asp_stmt::strings.add("reg_fact");} | GROUP_FACT{$asp_stmt::strings.add("group_fact");}) NAME{$asp_stmt::strings.add($NAME.text);} 
 	-> ^(ASP_SELECT<Tuple>[$asp_stmt.start, actions.castExprs($asp_stmt::exprs), $expr::ctype, $asp_stmt::strings, $asp_stmt::append, true, $asp_stmt::dir])) |
 	(ASP_PATH {$asp_stmt::strings.add($ASP_PATH.text);} aspdir
-	-> ^(ASP_PATH<Tuple>[$asp_stmt.start,actions.castExprs($asp_stmt::exprs), $expr::ctype, $asp_stmt::strings, $asp_stmt::append, true, $asp_stmt::dir]))
-
+	-> ^(ASP_PATH<Tuple>[$asp_stmt.start,actions.castExprs($asp_stmt::exprs), $expr::ctype, $asp_stmt::strings, $asp_stmt::append, true, $asp_stmt::dir])) 
+	
 	)
 	;
 
@@ -1958,7 +1942,7 @@ aspatom
 	{$asp_stmt::exprs.add(actions.castExpr($e.tree));
 	$asp_stmt::strings.add($asp_stmt::temp);
 	$asp_stmt::strings.add("@ASPREPLACESTRINGHERE@");
-	$asp_stmt::temp=""; }
+	$asp_stmt::temp=""; }	
 	;
 
 
@@ -1966,23 +1950,23 @@ aspload
 	: 	s = asploadfragment {$asp_stmt::temp+=$s.text;}
 	|	aspexpr
 	;
-
+	
 asploadfragment
-	:	(DIGITS)* NAME DOT NAME
+	:	(DIGITS)* NAME DOT NAME	
 	;
-
+	
 
 
 aspexpr
-	:	e = expr[expr_contextType.Load]
+	:	e = expr[expr_contextType.Load] 
 	{$asp_stmt::exprs.add(actions.castExpr($e.tree));
 	$asp_stmt::strings.add($asp_stmt::temp);
 	$asp_stmt::strings.add("@ASPREPLACESTRINGHERE@");
-	$asp_stmt::temp=""; }
+	$asp_stmt::temp=""; }	
 	;
-
-
-// expr
+	
+	
+// expr	
 // expr:-expr
 // :-expr
 aspquery:
@@ -2012,22 +1996,22 @@ aspqueryvar:
 	;
 
 
-
+	
 aspquerynotinterior
 	:	(NOT {$asp_stmt::temp+="not ";})* aspqueryinterior
 	;
-
-
+		
+	
 aspqueryinterior
 	:	s3=STRING {$asp_stmt::temp+=$s3.text;}
-	|	aspexpr
+	|	aspexpr 
 	;
-
+	
 aspnot
 	:
 	(NOT {$asp_stmt::temp+="not ";})* aspatom
 	;
-
+	
 aspsave
 	: aspload
 	| s1=CLEAR {$asp_stmt::temp+=$s1.text;}
@@ -2036,11 +2020,11 @@ aspsave
 aspdir
 	:	tempdir=path {$asp_stmt::dir += $tempdir.text + ";";} solverfrag?
 	;
-
+	
 solverfrag
 	:	SOLVER {$asp_stmt::strings.add($SOLVER.text);} tempsolver=path {$asp_stmt::dir += $tempsolver.text + ";";}
 	;
-//============================================================================
+//============================================================================	
 //query_stmt: SELECT * FROM person WHERE x = value
 sql_stmt
 scope{
@@ -2061,13 +2045,13 @@ scope connection;
         $sql_stmt.tree = etype;
     }
 }
-    :
+    :	 
     	{
            $sql_stmt::strings = new ArrayList<String>();
            $sql_stmt::exprs = new ArrayList<expr>();
            $sql_stmt::temp="";
-      	}
-      	(
+      	} 
+      	(	
 		  (SELECT sqlquery SEMI {$sql_stmt::strings.add($sql_stmt::temp);  }
       	-> ^(SELECT<Tuple>[$sql_stmt.start, actions.castExprs($sql_stmt::exprs), $expr::ctype,$sql_stmt::strings, "SQL"]))
       	| (INSERT sqlinsert SEMI {$sql_stmt::strings.add($sql_stmt::temp);}
@@ -2088,7 +2072,7 @@ scope connection;
       	-> ^(ASPSELECT<Tuple>[$sql_stmt.start, actions.castExprs($sql_stmt::exprs), $expr::ctype, $sql_stmt::strings, "ASP"]))
       	| (RDFSELECT sqlquery SEMI {$sql_stmt::strings.add($sql_stmt::temp);  }
       	-> ^(RDFSELECT<Tuple>[$sql_stmt.start, actions.castExprs($sql_stmt::exprs), $expr::ctype, $sql_stmt::strings, "ASP"]))
-
+      	
       	)
     ;
 /*
@@ -2102,7 +2086,7 @@ urlfrag
 	:
 	tempurl=URLLINK {$connection::url=$tempurl.text.substring(4);} namefrag?
 	;
-
+	
 namefrag
 	:
 	UNAME tempuname=NAME {$connection::uname=$tempuname.text;} pwordfrag?
@@ -2112,22 +2096,22 @@ fragment pwordfrag
 	:
 	PWORD temppword=NAME {$connection::pword=$temppword.text;} contypefrag?
 	;
-
+	
 contypefrag
 	:
 	CONTYPE tempcontype=NAME {$connection::contype=$tempcontype.text;}
-	;
-
+	;	
+	
 sqlquery
     : s1=sqlqueryfrag {$sql_stmt::temp+=$s1.text+" ";}
 	sqlwhereclause?
  	sqlorderbyclause?
     ;
-
+	
 sqlqueryfrag
-	:  ('TOP')? ( STAR | (NAME DOT)? NAME (CAPSAS? NAME)? ( COMMA (NAME DOT)? NAME (CAPSAS? NAME)?)* | AGGREG (NAME DOT)? NAME RPAREN (CAPSAS NAME)? ) CAPSFROM (NAME CAPSAS?)? NAME ( COMMA (NAME CAPSAS?)? NAME)* (sqljoinfrag)?
+	:  ('TOP')? ( STAR | (NAME DOT)? NAME (CAPSAS? NAME)? ( COMMA (NAME DOT)? NAME (CAPSAS? NAME)?)* | AGGREG (NAME DOT)? NAME RPAREN (CAPSAS NAME)? ) CAPSFROM (NAME CAPSAS?)? NAME ( COMMA (NAME CAPSAS?)? NAME)* (sqljoinfrag)? 
 	;
-
+	
 sqljoinfrag
         : JOIN (NAME CAPSAS?)? NAME ON NAME DOT NAME ASSIGN NAME DOT NAME (JOIN (NAME CAPSAS?)? NAME ON NAME DOT NAME ASSIGN NAME DOT NAME)*
         ;
@@ -2153,17 +2137,17 @@ sqlinsertfrag
 sqlalter:	s1=sqlalterfrag {$sql_stmt::temp+=$s1.text+" ";}
 	;
 sqlalterfrag
-	:TABLE NAME NAME  ('('|')'|','|NAME|FLOAT|INT)+
-	;
+	:TABLE NAME NAME  ('('|')'|','|NAME|FLOAT|INT)+	
+	;		
 sqlupdate
 	: s1= sqlupdatefrag {$sql_stmt::temp+=$s1.text+" ";}  sqlexpr
-	( s2=sqlsetfrag {$sql_stmt::temp+=$s2.text+" ";}   sqlexpr)* sqlwhereclause?
+	( s2=sqlsetfrag {$sql_stmt::temp+=$s2.text+" ";}   sqlexpr)* sqlwhereclause?	
 	;
 sqlupdatefrag
 	: NAME SQL_SET sqlsetfrag
 	;
 sqlsetfrag
-	: COMMA? NAME ASSIGN
+	: COMMA? NAME ASSIGN 	
 	;
 sqldelete
 	:  s1=sqldeletefrag {$sql_stmt::temp+=$s1.text+" ";} sqlwhereclause?
@@ -2171,8 +2155,8 @@ sqldelete
 sqldeletefrag
 	: CAPSFROM NAME
 	;
-sqldrop
-	: s1=sqldropfrag {$sql_stmt::temp+=$s1.text+" ";}
+sqldrop	
+	: s1=sqldropfrag {$sql_stmt::temp+=$s1.text+" ";}	
 	;
 
 sqldropfrag
@@ -2187,9 +2171,9 @@ sqldropfrag
         ;
 
 sqlcreate
-	: s1=sqlcreatefrag {$sql_stmt::temp+=$s1.text+" ";}
+	: s1=sqlcreatefrag {$sql_stmt::temp+=$s1.text+" ";}	
 	;
-
+	
 sqlcreatefrag
         : TABLE (NAME DOT)? NAME (LPAREN sqlrelationalproperties RPAREN)+
         ;
@@ -2219,20 +2203,16 @@ sqlwherefrag1
 sqlwherefrag2
 	: ( CAPSAND | CAPSOR ) (NAME DOT)? NAME  ( ASSIGN | LESS | LESSEQUAL | GREATER | GREATEREQUAL | ALT_NOTEQUAL )
 	;
-
+	
 sqlsubquery
 	: LUNBAR SELECT sqlquery RUNBAR
 	;
 
 sqlexpr	//catches expressions and adds, also adding current string then reseting it
 	: e = expr[expr_contextType.Load]
-        {
-            $sql_stmt::exprs.add(actions.castExpr($e.tree));
-            $sql_stmt::strings.add($sql_stmt::temp);
-            $sql_stmt::temp="";
-        }
+	{$sql_stmt::exprs.add(actions.castExpr($e.tree));$sql_stmt::strings.add($sql_stmt::temp);$sql_stmt::temp=""; }	
 	;
-
+	
 sim_stmt
 scope{
         List strings;
@@ -2250,51 +2230,23 @@ scope connection;
 }
     :
         {
-            $sim_stmt::strings = new ArrayList<String>();
-            $sim_stmt::exprs = new ArrayList<expr>();
-            $sim_stmt::temp="";
+           $sim_stmt::strings = new ArrayList<String>();
+           $sim_stmt::exprs = new ArrayList<expr>();
+           $sim_stmt::temp="";
         }
         (
-            (MODIFY modifystmt SEMI {$sim_stmt::strings.add($sim_stmt::temp);}
-            -> ^(MODIFY<Tuple>[$sim_stmt.start, actions.castExprs($sim_stmt::exprs), $expr::ctype, $sim_stmt::strings, "SIM"]))
-    | (CAPSFROM retrievestmt {$sim_stmt::strings.add($sim_stmt::temp);}
-            -> ^(FROM<Tuple>[$sim_stmt.start, actions.castExprs($sim_stmt::exprs), $expr::ctype, $sim_stmt::strings, "SIM"]))
-    | (INSERT insertstmt SEMI {$sim_stmt::strings.add($sim_stmt::temp);}
-            -> ^(FROM<Tuple>[$sim_stmt.start, actions.castExprs($sim_stmt::exprs), $expr::ctype, $sim_stmt::strings, "SIM"]))
+	(MODIFY modifystmt SEMI {$sim_stmt::strings.add($sim_stmt::temp);}
+        -> ^(MODIFY<Tuple>[$sim_stmt.start, actions.castExprs($sim_stmt::exprs), $expr::ctype, $sim_stmt::strings, "SIM"]))
+	| (CAPSFROM retrievestmt {$sim_stmt::strings.add($sim_stmt::temp);}
+        -> ^(FROM<Tuple>[$sim_stmt.start, actions.castExprs($sim_stmt::exprs), $expr::ctype, $sim_stmt::strings, "SIM"]))
+	| (INSERT insertstmt SEMI {$sim_stmt::strings.add($sim_stmt::temp);}
+        -> ^(FROM<Tuple>[$sim_stmt.start, actions.castExprs($sim_stmt::exprs), $expr::ctype, $sim_stmt::strings, "SIM"]))	
 	| (CAPSCLASS class_stmt SEMI {$sim_stmt::strings.add($sim_stmt::temp);}
-            -> ^(CAPSCLASS<Tuple>[$sim_stmt.start, actions.castExprs($sim_stmt::exprs), $expr::ctype, $sim_stmt::strings, "SIM"]))
+        -> ^(CAPSCLASS<Tuple>[$sim_stmt.start, actions.castExprs($sim_stmt::exprs), $expr::ctype, $sim_stmt::strings, "SIM"]))
 	| (SUBCLASS subclass_stmt SEMI {$sim_stmt::strings.add($sim_stmt::temp);}
-            -> ^(SUBCLASS<Tuple>[$sim_stmt.start, actions.castExprs($sim_stmt::exprs), $expr::ctype, $sim_stmt::strings, "SIM"]))
-    )
-;
-
-sparql_stmt
-scope {
-    List strings;
-    List exprs;
-    String temp;
-}
-scope connection;
-@init {
-    expr etype = null;
-}
-@after {
-    if (etype != null) {
-        $sparql_stmt.tree = etype;
-    }
-}
-    :
-        {
-            $sparql_stmt::strings = new ArrayList<String>();
-            $sparql_stmt::exprs = new ArrayList<expr>();
-            $sparql_stmt::temp="";
-        }
-
-        (
-            (ENTAIL
-            -> ^(ENTAIL<Tuple>[$sparql_stmt.start, null, $expr::ctype, $sparql_stmt::strings, "SPARQL"]))
-        )
-    ;
+        -> ^(SUBCLASS<Tuple>[$sim_stmt.start, actions.castExprs($sim_stmt::exprs), $expr::ctype, $sim_stmt::strings, "SIM"]))	
+)
+   ;
 
 fragment modifystmt
 	:
@@ -2348,7 +2300,7 @@ dva_options
 
 eva_options
 	:
-	((REQD {$sim_stmt::strings.add("REQUIRED");})
+	((REQD {$sim_stmt::strings.add("REQUIRED");}) 
 	| (SV {$sim_stmt::strings.add("SV");})
 	| (MV {$sim_stmt::strings.add("MV");} (LPAREN {$sim_stmt::strings.add("MVOPTIONS");} eva_multivalued (COMMA eva_multivalued)* RPAREN {$sim_stmt::strings.add("MVOPTIONSEND");})?)
 	| (INVERSE CAPSIS iname=NAME {$sim_stmt::strings.add("INVERSEIS"); $sim_stmt::strings.add($iname.text);} ))
@@ -2368,14 +2320,14 @@ fromwherefrag
 	:
         whr=WHERE
 	((tname=NAME SEMI)|
-        (atname=NAME ASSIGN val=expr[expr_contextType.Load]
+        (atname=NAME ASSIGN val=expr[expr_contextType.Load] 
 	{$sim_stmt::strings.add($whr.text); $sim_stmt::strings.add($atname.text);$sim_stmt::exprs.add(actions.castExpr($val.tree));}
         (CAPSAND atname=NAME  {$sim_stmt::strings.add($atname.text);} ASSIGN val=expr[expr_contextType.Load]  {$sim_stmt::exprs.add(actions.castExpr($val.tree));})* SEMI))
 	;
 
 selectattributefrag
 	:
-	dva=(NAME | STAR) {$sim_stmt::strings.add($dva.text);} ( evaconnector=OF eva=NAME {$sim_stmt::strings.add($evaconnector.text + " " + $eva.text);} ( evaconnector=OF eva=NAME {$sim_stmt::strings.add($evaconnector.text + " " + $eva.text);} )* )?
+	dva=(NAME | STAR) {$sim_stmt::strings.add($dva.text);} ( evaconnector=OF eva=NAME {$sim_stmt::strings.add($evaconnector.text + " " + $eva.text);} ( evaconnector=OF eva=NAME {$sim_stmt::strings.add($evaconnector.text + " " + $eva.text);} )* )?	
 	;
 
 limitfrag
@@ -2399,11 +2351,11 @@ attributefrag
 
 evafrag
 	:
-	( (in=INCLUDE {$sim_stmt::strings.add("evaValue"); $sim_stmt::strings.add($in.text);})?
+	( (in=INCLUDE {$sim_stmt::strings.add("evaValue"); $sim_stmt::strings.add($in.text);})? 
         evaValue=NAME {if ($in.text == null) {$sim_stmt::strings.add("evaValue");} $sim_stmt::strings.add($evaValue.text); } CAPSWITH LPAREN
-        atname=NAME {$sim_stmt::strings.add($atname.text);} ASSIGN
-	val=expr[expr_contextType.Load] {$sim_stmt::exprs.add(actions.castExpr($val.tree));}
-        (CAPSAND atname=NAME  {$sim_stmt::strings.add($atname.text);} ASSIGN val=expr[expr_contextType.Load]  {$sim_stmt::exprs.add(actions.castExpr($val.tree));})* RPAREN
+        atname=NAME {$sim_stmt::strings.add($atname.text);} ASSIGN 
+	val=expr[expr_contextType.Load] {$sim_stmt::exprs.add(actions.castExpr($val.tree));} 
+        (CAPSAND atname=NAME  {$sim_stmt::strings.add($atname.text);} ASSIGN val=expr[expr_contextType.Load]  {$sim_stmt::exprs.add(actions.castExpr($val.tree));})* RPAREN 
 	)
 	;
 
@@ -2415,9 +2367,9 @@ dvafrag
 
 whereclausefrag
 	:
-	whr=WHERE {$sim_stmt::strings.add($whr.text);}
-        atname=NAME {$sim_stmt::strings.add($atname.text);} ASSIGN
-	val=expr[expr_contextType.Load] {$sim_stmt::exprs.add(actions.castExpr($val.tree));}
+	whr=WHERE {$sim_stmt::strings.add($whr.text);} 	
+        atname=NAME {$sim_stmt::strings.add($atname.text);} ASSIGN 
+	val=expr[expr_contextType.Load] {$sim_stmt::exprs.add(actions.castExpr($val.tree));} 
         (CAPSAND atname=NAME  {$sim_stmt::strings.add($atname.text);} ASSIGN val=expr[expr_contextType.Load]  {$sim_stmt::exprs.add(actions.castExpr($val.tree));})*
 	;
 
@@ -2427,6 +2379,32 @@ sim_expr
 	;
 //=================
 //===========================================================
+
+sparql_stmt
+scope{
+        List strings;
+        List exprs;
+        String temp;
+}
+scope connection;
+@init {
+    expr etype = null;
+}
+@after {
+    if (etype != null) {
+        $sparql_stmt.tree = etype;
+    }
+}
+    :
+        {
+           $sparql_stmt::strings = new ArrayList<String>();
+           $sparql_stmt::exprs = new ArrayList<expr>();
+           $sparql_stmt::temp="";
+        }
+        (
+            (ENTAIL {System.out.println("Saw an entail.");}
+            -> ^(ENTAIL<Tuple>[$sparql_stmt.start, null, $expr::ctype, $sparql_stmt::strings, "SPARQL"])))
+;
 
 //listmaker: test ( list_for | (',' test)* [','] )
 listmaker[Token lbrack]
@@ -2464,7 +2442,7 @@ testlist_gexp
 }
     : t+=test[$expr::ctype]
         ( (options {k=2;}: c1=COMMA t+=test[$expr::ctype])* (c2=COMMA)?
-         { $c1 != null || $c2 != null }?
+         { $c1 != null || $c2 != null }? 
            {
                etype = new Tuple($testlist_gexp.start, actions.castExprs($t), $expr::ctype);
            }
@@ -2946,7 +2924,7 @@ AGGREG	:	'MAX('
 	;
 LUNBAR	:	'_|';
 RUNBAR	:	'|_';
-//new Tokens to help get ASP/Prolog facts
+//new Tokens to help get ASP/Prolog facts 
 ASPSELECT :	'ASPSELECT';
 RDFSELECT :	'RDFSELECT';
 
@@ -3097,19 +3075,13 @@ COMPLEX
     |   FLOAT ('j'|'J')
     ;
 
+ENTAIL : 'ENTAIL';
+
 fragment
-DIGITS
-: ( '0' .. '9' )+
-;
+DIGITS : ( '0' .. '9' )+ ;
 
-ENTAIL
-: 'ENTAIL'
-;
-
-NAME
-:
-( 'a' .. 'z' | 'A' .. 'Z' | '_')
-( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9')*
+NAME:    ( 'a' .. 'z' | 'A' .. 'Z' | '_')
+        ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9')* 
     ;
 
 URLLINK: URL ' ' ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' | COLON | AT | MINUS | DOT )+
@@ -3133,7 +3105,6 @@ STRING
     ;
 
 /** the two '"'? cause a warning -- is there a way to avoid that? */
-
 fragment
 TRIQUOTE
     : '"'? '"'? (ESC|~('\\'|'"'))+
@@ -3278,6 +3249,6 @@ COMMENT
     :    {startPos==0}?=> (' '|'\t')* '#' (~'\n')* '\n'+
     |    '#' (~'\n')* // let NEWLINE handle \n unless char pos==0 for '#'
     ;
-
-path :
+	
+path : 
     ('/' NAME)+ {System.out.println("path is:" + $path.text);};
