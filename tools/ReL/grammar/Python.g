@@ -1,3 +1,10 @@
+/* Student: Minh Pham
+ * EID: mlp2279
+ * CSID: minhpham
+ * Section: TTh 5:00-6:30pm
+ * TA: benself
+ */
+
 /*
  [The 'BSD licence']
  Copyright (c) 2004 Terence Parr and Loring Craymer
