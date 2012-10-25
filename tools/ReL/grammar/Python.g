@@ -2402,7 +2402,7 @@ scope connection;
            $sparql_stmt::temp="";
         }
         (
-            (ENTAIL {System.out.println("Saw an entail.");}
+            (ENTAIL
             -> ^(ENTAIL<Tuple>[$sparql_stmt.start, null, $expr::ctype, $sparql_stmt::strings, "SPARQL"])))
 ;
 
@@ -2867,6 +2867,10 @@ CTYPE   :	'CONNTYPE';
 
 //*** end of lexer rules for SIM ***
 
+//*** start of lexer rules for SPARQL ***
+ENTAIL : 'ENTAIL';
+//*** end of lexer rules for SPARQL ***
+
 //====================================================================
 //====================================================================
 
@@ -3074,8 +3078,6 @@ COMPLEX
     :   DIGITS+ ('j'|'J')
     |   FLOAT ('j'|'J')
     ;
-
-ENTAIL : 'ENTAIL';
 
 fragment
 DIGITS : ( '0' .. '9' )+ ;
