@@ -1,0 +1,113 @@
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+		<meta name="generator" content="Adobe GoLive 5">
+		<title>CS 345 Homework 4</title>
+	</head>
+
+	<body bgcolor="#ffffff">
+    <p>Homework Assignment # 6<br>
+    Due Tuesday November 20, 2012 by 11:59 pm + 1 minute (Midnight). Use turnin to submit your homework (i.e., turnin -submit [MW use swati, TTh use benself] CS345_HW6 HW6.pl)</p>
+    <p><br>
+  Run the following sql queries in SQLDeveloper and put the results in a file named PrologDB.pl. (you'll need to load Student.sql from the class website into your user account first.) This will give you a subset of the Student   Database (sufficient for this homework) as Prolog Facts (Relations).</p>
+    <p>select 'student(' || STUDENT_ID<br>
+      || ', ''' || SALUTATION<br>
+      || ''', ''' || FIRST_NAME<br>
+      || ''', ''' || LAST_NAME<br>
+      || ''', ''' || STREET_ADDRESS<br>
+      || ''', ' || ZIP<br>
+      || ', ''' || PHONE<br>
+      || ''', ''' || EMPLOYER<br>
+    || ''', ''' || REGISTRATION_DATE || ''').' from student;</p>
+    <p>select 'zipcode(' || ZIP<br>
+      || ', ''' || CITY<br>
+      || ''', ''' || STATE || ''').' from ZIPCODE;</p>
+    <p>select 'enrollment(' || STUDENT_ID<br>
+      || ', ' || SECTION_ID<br>
+      || ', ''' || ENROLL_DATE<br>
+      || ''', ' || nvl(FINAL_GRADE, 0)|| ').' from ENROLLMENT;</p>
+    <p>select 'section(' || SECTION_ID<br>
+      || ', ' || COURSE_NO<br>
+      || ', ' || SECTION_NO<br>
+      || ', ''' || START_DATE_TIME<br>
+      || ''', ''' || LOCATION<br>
+      || ''', ' || INSTRUCTOR_ID<br>
+      || ', ' || CAPACITY || ').' from SECTION;</p>
+    <p>select 'course(' || Course_NO<br>
+      || ', ''' || DESCRIPTION<br>
+      || ''', ' || nvl(COST, 0)<br>
+      || ', ' || nvl(PREREQUISITE, 0) || ').' from COURSE;</p>
+    <p>select 'instructor(' || INSTRUCTOR_ID<br>
+      || ', ''' || SALUTATION<br>
+      || ''', ''' || FIRST_NAME<br>
+      || ''', ''' || LAST_NAME<br>
+      || ''', ''' || STREET_ADDRESS<br>
+      || ''', ' || nvl(ZIP, 0)<br>
+      || ', ''' || PHONE || ''').' from INSTRUCTOR;</p>
+    <p>[10 Points] For the  Prolog database in PrologDB.pl, re-write the following SQL queries in Prolog and put them in HW6.pl.</p>
+    <p>1. select s.student_id, last_name, section_id</p>
+    <p>from student s, enrollment e</p>
+    <p>where s.student_id = e.student_id and</p>
+    <p>first_name = 'Fred'</p>
+    <p>2. select s.student_id, last_name, e.section_id, course_no, instructor_id</p>
+    <p>from student s, enrollment e, section c</p>
+    <p>where s.student_id = e.student_id and</p>
+    <p>e.section_id = c.section_id and</p>
+    <p>first_name = 'Fred'</p>
+    <p>3. select s.student_id, last_name, e.section_id, r.course_no, instructor_id, description</p>
+    <p>from student s, enrollment e, section c, course r</p>
+    <p>where s.student_id = e.student_id and</p>
+    <p>e.section_id = c.section_id and</p>
+    <p>c.course_no = r.course_no and</p>
+    <p>first_name = 'Fred'</p>
+    <p>4. select s.student_id, s.last_name, e.section_id, r.course_no,</p>
+    <p>i.instructor_id, description, i.first_name, i.last_name</p>
+    <p>from student s, enrollment e, section c, course r, instructor i</p>
+    <p>where s.student_id = e.student_id and</p>
+    <p>e.section_id = c.section_id and</p>
+    <p>c.course_no = r.course_no and</p>
+    <p>c.instructor_id = i.instructor_id and</p>
+    <p>s.first_name = 'Fred'</p>
+    <p>5. select i.instructor_id, c.course_no, description, section_id</p>
+    <p>from instructor i, section s, course c</p>
+    <p>where i.instructor_id = s.instructor_id and</p>
+    <p>s.course_no = c.course_no and</p>
+    <p>first_name = 'Nina' and last_name = 'Schorin'</p>
+    <p>6. select c.course_no, first_name, last_name, i.instructor_id, s.section_id</p>
+    <p>from course c, section s, instructor i</p>
+    <p>where c.course_no = s.course_no and</p>
+    <p>s.instructor_id = i.instructor_id</p>
+    <p>and description = 'Hands-On Windows'</p>
+    <p>7. select c.course_no, p.first_name, p.last_name, i.instructor_id, s.section_id</p>
+    <p>from course c, section s, instructor i, enrollment e, student p</p>
+    <p>where c.course_no = s.course_no and</p>
+    <p>s.instructor_id = i.instructor_id and</p>
+    <p>e.student_id = p.student_id and</p>
+    <p>s.section_id = e.section_id</p>
+    <p>and description = 'Hands-On Windows' and</p>
+    <p>i.first_name = 'Anita' and i.last_name = 'Morris'</p>
+    <p>8. select c.description, c.prerequisite</p>
+    <p>from course c, course p</p>
+    <p>where c.prerequisite = p.course_no</p>
+    <p>9. select cost, description</p>
+    <p>from course</p>
+    <p>where cost &lt; 1100</p>
+    <p>10. Look at the ancestor rules in the file 11Prolog Examples.p and</p>
+    <p>write a set of rules for prereq that will find all of the prerequisite courses for a course such as prereq(P, 403) would give:</p>
+    <p>A = 350 ? ;</p>
+    <p>A = 0 ? ;</p>
+    <p>A = 204 ? ;</p>
+    <p>A = 80 ? ;</p>
+    <p>A = 120 ? ;</p>
+    <p>A = 122 ? ;</p>
+    <p>A = 20 ? ;</p>
+    <p>A = 125 ? ;</p>
+    <p><br>
+    </p>
+<p>&nbsp;</p>
+    <p></p>
+<p>&nbsp;</p>
+</body>
+
+</html>
