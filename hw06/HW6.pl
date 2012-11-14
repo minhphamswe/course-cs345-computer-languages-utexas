@@ -104,7 +104,7 @@ course(_, Description, Cost, _), Cost < 1100.
 
 %% 10. Look at the ancestor rules in the file 11Prolog Examples.p
 %% and write a set of rules for prereq that will find all of the
-%% prerequisite courses for a course such as prereq(P, 430) would
+%% prerequisite courses for a course such as prereq(A, 430) would
 %% give:
 %% A = 350 ? ;
 %% A = 0 ? ;
@@ -115,6 +115,9 @@ course(_, Description, Cost, _), Cost < 1100.
 %% A = 20 ? ;
 %% A = 125 ? ;
 
-prereq(X, Y):- course(Y, _, _, X).
-prereq(X, Y):- prereq(Z, Y), prereq(X, Z).
+im_prereq(0, Y):- course(Y, _, _, 0).
+im_prereq(X, Y):- course(Y, _, _, X), Y \= 0.
+
+prereq(X, Y):- im_prereq(X, Y).
+prereq(Z, Y):- prereq(X, Y), im_prereq(Z, X).
 
